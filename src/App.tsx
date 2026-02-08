@@ -3,6 +3,7 @@ import { LiveStats } from './components/stats/LiveStats';
 import { ResultsScreen } from './components/stats/ResultsScreen';
 import { LibraryModal } from './components/modals/LibraryModal';
 import { KeyHints } from './components/KeyHints';
+import { Footer } from './components/Footer';
 import { useTypingStore } from './store/useTypingStore';
 
 
@@ -34,9 +35,11 @@ function App() {
         </div>
 
         {/* Bottom Hints */}
-        <div className="mt-auto pt-6 pb-8 border-t border-soft-charcoal/10">
+        <div className="mt-auto pt-6 border-t border-soft-charcoal/10">
           <KeyHints />
         </div>
+
+        <Footer />
       </section>
 
       {/* Overlays */}

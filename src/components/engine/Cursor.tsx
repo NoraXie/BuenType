@@ -15,8 +15,8 @@ export const Cursor = ({ top, left, height = 24 }: CursorProps) => {
     return (
         <div
             className={clsx(
-                "absolute bg-soft-charcoal w-0.5 rounded transition-all duration-100 ease-linear",
-                isActive ? "opacity-100" : "animate-pulse" // Stop blinking while typing? Or always blink?
+                "absolute bg-amber-500 w-0.5 sm:w-[3px] rounded-full transition-all duration-100 ease-linear shadow-[0_0_8px_rgba(245,158,11,0.6)]",
+                !isActive ? "animate-blink" : "opacity-100"
             )}
             style={{
                 top: `${top}px`,

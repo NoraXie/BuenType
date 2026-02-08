@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { useTypingStore } from '../../store/useTypingStore';
 import { Cursor } from './Cursor';
+import { Keyboard } from 'lucide-react';
 import { useTypingEngine } from '../../hooks/useTypingEngine';
 
 export const TypingDisplay = () => {
@@ -9,7 +10,8 @@ export const TypingDisplay = () => {
         text,
         currentIndex,
         errors,
-        isFinished
+        isFinished,
+        consecutiveErrors
     } = useTypingStore();
 
     // Engine hook handles input and focus
@@ -142,6 +144,26 @@ export const TypingDisplay = () => {
                     className="inline-block w-0"
                 >&#8203;</span>
             </div>
+
+            {/* Keyboard Layout Hint */}
+            {consecutiveErrors >= 5 && (
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-amber-50 border-2 border-amber-200 p-6 rounded-2xl shadow-2xl z-30 max-w-sm w-full animate-in zoom-in duration-300">
+                    <div className="flex flex-col items-center text-center gap-4">
+                        <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-600">
+                            <Keyboard size={24} />
+                        </div>
+                        <div>
+                            <h4 className="font-bold text-soft-charcoal text-lg">Multiple Errors Detected</h4>
+                            <p className="text-sm text-soft-charcoal/70 mt-1">
+                                It looks like you're having trouble. Please make sure your keyboard input method is set to <span className="font-bold text-amber-700">Spanish</span>.
+                            </p>
+                        </div>
+                        <div className="text-[10px] text-amber-800/40 uppercase tracking-widest font-black">
+                            Tip: Correct typing will hide this message
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {/* Overlay if Finished? Handled by parent or ResultsScreen */}
         </div>

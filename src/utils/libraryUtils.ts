@@ -57,15 +57,15 @@ const parseMarkdown = (markdown: string, bookIdPrefix: string): Chapter[] => {
 
 export const INITIAL_LIBRARY: Book[] = [
     {
-        id: 'special_chars',
-        title: 'Special Characters Practice',
-        coverColor: 'bg-emerald-100',
-        chapters: parseMarkdown(specialChars, 'special')
-    },
-    {
         id: 'humor_100',
         title: '100 Spanish Humor Stories',
         coverColor: 'bg-amber-100',
         chapters: parseMarkdown(funnyStories, 'humor')
+    },
+    {
+        id: 'special_chars',
+        title: 'Special Characters Practice',
+        coverColor: 'bg-emerald-100',
+        chapters: parseMarkdown(specialChars, 'special')
     }
 ];

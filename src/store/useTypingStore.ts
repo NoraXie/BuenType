@@ -49,6 +49,7 @@ interface TypingState {
     isFinished: boolean;
     isActive: boolean;
     stats: TypingStats;
+    consecutiveErrors: number;
 
     // Actions
     setText: (text: string) => void;
@@ -72,6 +73,7 @@ export const useTypingStore = create<TypingState>()(
 
             currentBookId: defaultBookId,
             currentChapterId: defaultChapterId,
+            consecutiveErrors: 0,
             setChapter: (bookId, chapterId, text) => set({
                 currentBookId: bookId,
                 currentChapterId: chapterId,
@@ -167,6 +169,8 @@ export const useTypingStore = create<TypingState>()(
                     }
                 }
 
+                const consecutiveErrors = isCorrect ? 0 : state.consecutiveErrors + 1;
+
                 const totalTyped = currentStats.totalChars + 1;
                 const accuracy = Math.round(((totalTyped - errorCount) / totalTyped) * 100);
 
@@ -184,7 +188,8 @@ export const useTypingStore = create<TypingState>()(
                         accuracy: Math.max(0, accuracy),
                         errors: errorCount,
                         totalChars: totalTyped,
-                    }
+                    },
+                    consecutiveErrors
                 });
 
                 const finished = newIndex >= state.text.length;

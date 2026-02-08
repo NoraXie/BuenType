@@ -1,73 +1,50 @@
-# React + TypeScript + Vite
+# ⌨️ BuenType
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**BuenType** is a minimalist, web-based typing tutor specifically designed for mastering the Spanish language. It combines a focused language-learning experience with a high-performance typing engine.
 
-Currently, two official plugins are available:
+**Live Demo:** [https://buentype.netlify.app/](https://buentype.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Current Features (v1.0)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1. High-Precision Typing Engine
+- **Real-time Validation**: Instant visual feedback with character-level color coding (Correct: Black, Incorrect: Red highlight, Upcoming: Grey).
+- **Spanish Character Support**: Full compatibility with Spanish-specific characters including accents (`á, é, í, ó, ú`) and special symbols (`ñ, ¡, ¿`).
+- **Smooth Navigation**: A fluid, responsive caret that follows your typing pace with zero latency.
 
-## Expanding the ESLint configuration
+### 2. "Eye-Care" Visual Design
+- **Parchment Theme**: A custom-tuned `#F5E6D3` background designed to reduce eye strain during long practice sessions.
+- **Minimalist Layout**: Uses **JetBrains Mono** typography for maximum legibility and a clean, distraction-free environment.
+- **Dynamic Header**: Speed (WPM) and Accuracy stats are displayed with low opacity to keep the focus on the text, becoming fully visible only when needed.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 3. Content Customization
+- **Source Injection**: A dedicated "Import" modal that allows users to paste custom Spanish text or Markdown notes for personalized practice.
+- **Cervantes Edition**: Pre-loaded with classic Spanish literary text to get you started immediately.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 4. Live Performance Metrics
+- **WPM Tracking**: Real-time calculation of Words Per Minute based on standardized typing metrics.
+- **Accuracy Percentage**: Dynamic tracking of keystroke precision.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📈 Roadmap
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- [ ] **Audio Feedback (Next)**: Mechanical keyboard sounds and word-completion dings to enhance immersion.
+- [ ] **Session Summary**: A detailed post-practice dashboard featuring WPM volatility charts.
+- [ ] **Focus Words**: Automatically save difficult words to `LocalStorage` for targeted review.
+- [ ] **Typing PK**: Real-time competitive mode to challenge other learners.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 💻 Installation & Setup
+
+```bash
+# Clone the repository
+git clone git@github.com:NoraXie/BuenType.git
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev

@@ -1,5 +1,7 @@
 # BuenType 
-¡Bienvenido a todos los usuarios! “Soy Nora, por favor prueba con más texto.”
+¡Hola! Bienvenido a BuenType. Este es un lugar para practicar español. Aquí, cada palabra es importante. Tú escribes, tú escuchas, tú aprendes. No tengas miedo de los errores. Los errores son parte del camino. Poco a poco, vas a mejorar. ¡Vamos a escribir con ritmo!
+
+Hello! Welcome to BuenType. This is a place to practice Spanish. Here, every word is important. You write, you listen, you learn. Do not be afraid of mistakes. Mistakes are part of the journey. Little by little, you will improve. Let's type with rhythm!
 
 
 # Practicar peces
