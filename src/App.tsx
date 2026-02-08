@@ -12,7 +12,7 @@ function App() {
   return (
     <main className="min-h-screen bg-parchment flex flex-col font-sans text-soft-charcoal selection:bg-soft-charcoal selection:text-parchment">
       {/* Header */}
-      <header className="w-full max-w-full px-8 py-6 flex items-center justify-between">
+      <header className="w-full max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <h1 className="text-2xl font-bold tracking-tight">BuenType</h1>
           <div className="h-6 w-px bg-soft-charcoal/20 mx-2"></div>
@@ -25,15 +25,19 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <section className="flex-1 flex flex-col items-center justify-center w-full px-8 relative">
-        <TypingDisplay />
-        <KeyHints />
-      </section>
+      {/* Main Content */}
+      <section className="flex-1 flex flex-col w-full max-w-7xl mx-auto px-4 relative">
 
-      {/* Footer */}
-      <footer className="p-6 text-center text-soft-charcoal/40 text-sm font-mono">
-        <p>Option + e = é • Option + n = ñ • Option + u = ü</p>
-      </footer>
+        {/* Typing Area - Centered */}
+        <div className="flex-1 flex flex-col items-center justify-center min-h-0">
+          <TypingDisplay />
+        </div>
+
+        {/* Bottom Hints */}
+        <div className="mt-auto pt-6 pb-8 border-t border-soft-charcoal/10">
+          <KeyHints />
+        </div>
+      </section>
 
       {/* Overlays */}
       {isFinished && <ResultsScreen />}
