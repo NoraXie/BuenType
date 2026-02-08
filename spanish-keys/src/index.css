@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: theme('colors.parchment');
+  color: theme('colors.soft-charcoal');
+}
+
+/* Custom cursor animation for smooth movement */
+.cursor-smooth {
+  transition: left 0.1s linear, top 0.1s linear;
+}
+
+/* Hide scrollbar for clean UI if needed, or custom style */
