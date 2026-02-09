@@ -16,3 +16,13 @@ export const normalizeText = (text: string): string => {
         .replace(/\u00A0/g, ' ')
         .trim();
 };
+
+export const stripPunctuation = (text: string): string => {
+    return text
+        // Replace all punctuation and symbols with spaces
+        // We keep letters (including accented ones like á, é, ñ), numbers, and spaces
+        .replace(/[^\w\s\u00C0-\u00FF\u0100-\u017F\u0180-\u024F]/g, ' ')
+        // Collapse multiple spaces into one
+        .replace(/\s+/g, ' ')
+        .trim();
+};

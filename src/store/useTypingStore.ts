@@ -9,11 +9,31 @@ const defaultText = defaultChapter?.content || "El veloz murciélago hindú com�
 const defaultBookId = defaultBook?.id || null;
 const defaultChapterId = defaultChapter?.id || null;
 
+const calculateCorrectWords = (text: string, currentIndex: number, errors: number[]) => {
+    const words = text.slice(0, currentIndex).split(/(\s+)/);
+    let count = 0;
+    let charOffset = 0;
+    words.forEach(part => {
+        if (part.trim().length > 0) {
+            const wordStart = charOffset;
+            const wordEnd = charOffset + part.length;
+            const isFinished = wordEnd < currentIndex || currentIndex === text.length;
+            if (isFinished) {
+                const hasError = errors.some(e => e >= wordStart && e < wordEnd);
+                if (!hasError) count++;
+            }
+        }
+        charOffset += part.length;
+    });
+    return count;
+};
+
 interface TypingStats {
     wpm: number;
     accuracy: number;
     errors: number;
     totalChars: number;
+    correctWords: number;
     startTime: number | null;
     endTime: number | null;
 }
@@ -82,7 +102,7 @@ export const useTypingStore = create<TypingState>()(
                 errors: [],
                 isFinished: false,
                 isActive: false,
-                stats: { wpm: 0, accuracy: 100, errors: 0, totalChars: 0, startTime: null, endTime: null }
+                stats: { wpm: 0, accuracy: 100, errors: 0, totalChars: 0, correctWords: 0, startTime: null, endTime: null }
             }),
 
             text: defaultText,
@@ -95,6 +115,7 @@ export const useTypingStore = create<TypingState>()(
                 accuracy: 100,
                 errors: 0,
                 totalChars: 0,
+                correctWords: 0,
                 startTime: null,
                 endTime: null,
             },
@@ -114,7 +135,7 @@ export const useTypingStore = create<TypingState>()(
                 errors: [],
                 isFinished: false,
                 isActive: false,
-                stats: { wpm: 0, accuracy: 100, errors: 0, totalChars: 0, startTime: null, endTime: null }
+                stats: { wpm: 0, accuracy: 100, errors: 0, totalChars: 0, correctWords: 0, startTime: null, endTime: null }
             }),
 
             startSession: () => set((state) => ({
@@ -179,6 +200,8 @@ export const useTypingStore = create<TypingState>()(
                 const correctChars = newIndex - newErrors.length;
                 const wpm = durationMin > 0 ? Math.round((correctChars / 5) / durationMin) : 0;
 
+                const correctWords = calculateCorrectWords(state.text, newIndex, newErrors);
+
                 set({
                     currentIndex: newIndex,
                     errors: newErrors,
@@ -188,6 +211,7 @@ export const useTypingStore = create<TypingState>()(
                         accuracy: Math.max(0, accuracy),
                         errors: errorCount,
                         totalChars: totalTyped,
+                        correctWords: correctWords
                     },
                     consecutiveErrors
                 });
@@ -207,9 +231,15 @@ export const useTypingStore = create<TypingState>()(
                     const newIndex = state.currentIndex - 1;
                     const newErrors = state.errors.filter(e => e !== newIndex);
 
+                    const correctWords = calculateCorrectWords(state.text, newIndex, newErrors);
+
                     return {
                         currentIndex: newIndex,
-                        errors: newErrors
+                        errors: newErrors,
+                        stats: {
+                            ...state.stats,
+                            correctWords
+                        }
                     };
                 });
             },
@@ -224,6 +254,7 @@ export const useTypingStore = create<TypingState>()(
                     accuracy: 100,
                     errors: 0,
                     totalChars: 0,
+                    correctWords: 0,
                     startTime: null,
                     endTime: null,
                 }

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { useTypingStore } from '../../store/useTypingStore';
 import { Cursor } from './Cursor';
-import { Keyboard } from 'lucide-react';
+import { Keyboard, X } from 'lucide-react';
 import { useTypingEngine } from '../../hooks/useTypingEngine';
 
 export const TypingDisplay = () => {
@@ -28,6 +28,14 @@ export const TypingDisplay = () => {
     const charRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
     const [cursorPos, setCursorPos] = useState({ top: 0, left: 0 });
+    const [isHintDismissed, setIsHintDismissed] = useState(false);
+
+    // Reset hint dismissed state when consecutiveErrors drops to 0
+    useEffect(() => {
+        if (consecutiveErrors === 0) {
+            setIsHintDismissed(false);
+        }
+    }, [consecutiveErrors]);
 
     // Ensure refs array matches text length
     // We only need to expand it if text grows (e.g. import). 
@@ -146,8 +154,15 @@ export const TypingDisplay = () => {
             </div>
 
             {/* Keyboard Layout Hint */}
-            {consecutiveErrors >= 5 && (
+            {consecutiveErrors >= 5 && !isHintDismissed && (
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-amber-50 border-2 border-amber-200 p-6 rounded-2xl shadow-2xl z-30 max-w-sm w-full animate-in zoom-in duration-300">
+                    <button
+                        onClick={() => setIsHintDismissed(true)}
+                        className="absolute top-3 right-3 text-amber-900/40 hover:text-amber-900 transition-colors"
+                        title="Dismiss"
+                    >
+                        <X size={18} />
+                    </button>
                     <div className="flex flex-col items-center text-center gap-4">
                         <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-600">
                             <Keyboard size={24} />

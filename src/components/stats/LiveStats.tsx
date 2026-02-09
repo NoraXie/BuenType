@@ -15,6 +15,10 @@ export const LiveStats = () => {
                 <span className="text-4xl font-bold">{stats.accuracy}%</span>
                 <span className="text-xs tracking-widest uppercase">ACC</span>
             </div>
+            <div className="flex flex-col items-center">
+                <span className="text-4xl font-bold">{stats.correctWords}</span>
+                <span className="text-xs tracking-widest uppercase">Words</span>
+            </div>
         </div>
     );
 };

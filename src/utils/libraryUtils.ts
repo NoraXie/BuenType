@@ -1,5 +1,7 @@
 import specialChars from '../assets/books/SpecialCharacters.md?raw';
 import funnyStories from '../assets/books/100FunnySpanishStories.md?raw';
+import specialCharsNoPunct from '../assets/books/SpecialCharacters_NoPunct.md?raw';
+import funnyStoriesNoPunct from '../assets/books/100FunnySpanishStories_NoPunct.md?raw';
 import { normalizeText } from './textUtils';
 
 export interface Chapter {
@@ -54,18 +56,29 @@ const parseMarkdown = (markdown: string, bookIdPrefix: string): Chapter[] => {
     return chapters;
 };
 
-
 export const INITIAL_LIBRARY: Book[] = [
     {
-        id: 'humor_100',
+        id: 'humor',
         title: '100 Spanish Humor Stories',
         coverColor: 'bg-amber-100',
         chapters: parseMarkdown(funnyStories, 'humor')
     },
     {
-        id: 'special_chars',
+        id: 'special',
         title: 'Special Characters Practice',
         coverColor: 'bg-emerald-100',
         chapters: parseMarkdown(specialChars, 'special')
+    },
+    {
+        id: 'no_punct_humor',
+        title: '100 Spanish Humor Stories (Sin puntuación)',
+        coverColor: 'bg-amber-50',
+        chapters: parseMarkdown(funnyStoriesNoPunct, 'no_punct_humor')
+    },
+    {
+        id: 'no_punct_special',
+        title: 'Special Characters Practice (Sin puntuación)',
+        coverColor: 'bg-emerald-50',
+        chapters: parseMarkdown(specialCharsNoPunct, 'no_punct_special')
     }
 ];
