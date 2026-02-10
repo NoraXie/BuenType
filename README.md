@@ -13,18 +13,23 @@
 - **Spanish Character Support**: Full compatibility with Spanish-specific characters including accents (`á, é, í, ó, ú`) and special symbols (`ñ, ¡, ¿`).
 - **Smooth Navigation**: A fluid, responsive caret that follows your typing pace with zero latency.
 
-### 2. "Eye-Care" Visual Design
-- **Parchment Theme**: A custom-tuned `#F5E6D3` background designed to reduce eye strain during long practice sessions.
-- **Minimalist Layout**: Uses **JetBrains Mono** typography for maximum legibility and a clean, distraction-free environment.
-- **Dynamic Header**: Speed (WPM) and Accuracy stats are displayed with low opacity to keep the focus on the text, becoming fully visible only when needed.
+### 2. Versatile Practice Modes
+- **Original Edition**: Practice with full punctuation, accents, and special symbols for complete mastery.
+- **Flow Mode (Sin puntuación)**: Automatically generated punctuation-free versions of all texts. Focus purely on typing rhythm and speed without reaching for symbol keys.
 
-### 3. Content Customization
-- **Source Injection**: A dedicated "Import" modal that allows users to paste custom Spanish text or Markdown notes for personalized practice.
-- **Cervantes Edition**: Pre-loaded with classic Spanish literary text to get you started immediately.
+### 3. "Eye-Care" Visual Design
+- **Parchment Theme**: A custom-tuned background designed to reduce eye strain.
+- **Amber Cursor**: A vibrant, glow-highlighted cursor that is highly visible even in focus mode.
+- **Minimalist Layout**: Uses **JetBrains Mono** typography for maximum legibility.
 
 ### 4. Live Performance Metrics
-- **WPM Tracking**: Real-time calculation of Words Per Minute based on standardized typing metrics.
-- **Accuracy Percentage**: Dynamic tracking of keystroke precision.
+- **Standardized WPM**: Real-time speed calculation.
+- **Accuracy Percentage**: Keystroke precision tracking.
+- **Correct Word Count**: Monitor your progress with a count of fully completed words.
+
+### 5. Content Library
+- **Source Injection**: "Import" modal for custom Spanish text.
+- **Curated Books**: Pre-loaded with "100 Spanish Humor Stories" and targeted "Special Characters Practice".
 
 ---
 
